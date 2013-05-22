@@ -73,7 +73,7 @@ public class Calculator {
         ArrayList<String> result = new ArrayList<String>();
 
         String regex1 = "(//)(\\[(.*)\\])\\n(.*)";
-        //String regex2 = "([)(.*)(])";
+        ////String regex2 = "([)(.*)(])";
         if (numberString.matches(regex1)) {
             //System.out.println("MATCH ");
 
@@ -89,7 +89,6 @@ public class Calculator {
                     result.add(si);
                 }
             }
-            //System.out.println("HERE " + result);
             return result;
         }
         else {
