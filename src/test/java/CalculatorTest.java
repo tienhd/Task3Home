@@ -71,4 +71,6 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         Assert.assertEquals(6,calculator.add("//[6][,]\n16,26,3"));
     }
+
+
 }
