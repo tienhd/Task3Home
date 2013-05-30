@@ -25,7 +25,7 @@ public class Calculator {
             ArrayList<String> pre = getDefineDelimiter(numberString);
             String regex = " ";
             if (pre.isEmpty()) {
-                regex = "([,.!\\s+\\n;*/*]*)";
+                regex = "[,!\\s+\\n;*/]";
             }
             else {
 
@@ -54,14 +54,15 @@ public class Calculator {
             }
 
             String[] numbers = numberString.split(regex);
+            String negative = "(-[\\d]*)";
             for ( int i = 0; i < numbers.length; i++) {
                 if ((!numbers[i].isEmpty()) && (!numbers[i].equals("[")) && (!numbers[i].equals("]"))) {
                     //System.out.println(numbers[i]);
-                    if (Integer.parseInt(numbers[i]) >= 0) {
-                        result += Integer.parseInt(numbers[i]);
-                    }
-                    else {
+                    if (numbers[i].matches(negative)) {
                         throw new NumberFormatException ("Negative is not allowed");
+                    }
+                    else if ((Integer.parseInt(numbers[i]) >= 0) && (Integer.parseInt(numbers[i]) < 1000)) {
+                        result += Integer.parseInt(numbers[i]);
                     }
                 }
             }

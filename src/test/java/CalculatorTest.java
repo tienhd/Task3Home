@@ -45,12 +45,19 @@ public class CalculatorTest {
     @Rule
     public ExpectedException myException = ExpectedException.none();
 
-    @Test (expected = NumberFormatException.class)
+    @Test
     public void testException() {
         Calculator calculator = new Calculator();
-        calculator.add("-1,-2");
         myException.expect(NumberFormatException.class);
         myException.expectMessage("Negative is not allowed");
+        calculator.add("-1,-2");
+
+    }
+
+    @Test
+    public void testWithNumberGreaterThan1000 () {
+        Calculator calculator = new Calculator();
+        Assert.assertEquals(5,calculator.add("//2,3,1001"));
     }
 
     @Test
@@ -69,7 +76,7 @@ public class CalculatorTest {
     @Test
     public void testQuynhTQ() {
         Calculator calculator = new Calculator();
-        Assert.assertEquals(6,calculator.add("//[6][,]\n16,26,3"));
+        Assert.assertEquals(6,calculator.add("//[,,]\n1,,3,,2"));
     }
 
 
